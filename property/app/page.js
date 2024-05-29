@@ -2,9 +2,8 @@ import Hero from "@/components/Hero";
 import HomeProperties from "@/components/HomeProperties";
 import InfoBoxes from "@/components/InfoBoxes";
 import React from "react";
-import properites from "@/properties.json";
 
-const page = () => {
+const Homepage = () => {
   return (
     <>
       <Hero />
@@ -14,4 +13,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Homepage;
