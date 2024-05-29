@@ -1,9 +1,22 @@
 import React from "react";
-import properties from "@/properties.json";
 import PropertyCard from "./PropertyCard";
 import Link from "next/link";
 
-const HomeProperties = () => {
+async function fetchProperties() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/properties`);
+
+    if (!res.ok) {
+      throw new Error("failed to fetch data");
+    }
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const HomeProperties = async () => {
+  const properties = await fetchProperties();
   const recentproperties = properties
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
@@ -26,7 +39,7 @@ const HomeProperties = () => {
       <section className="m-auto max-w-lg my-10 px-6">
         <Link
           href="/properties"
-          class="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
+          className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
         >
           View All Properties
         </Link>
