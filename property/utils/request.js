@@ -4,6 +4,7 @@ async function fetchProperties() {
   try {
     //handle when domain is not available yet
     if (!apidomain) {
+      return [];
     }
     const res = await fetch(`${apidomain}/properties`);
 
@@ -12,6 +13,7 @@ async function fetchProperties() {
     }
     return res.json();
   } catch (error) {
+    return [];
     console.log(error);
   }
 }
