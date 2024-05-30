@@ -6,6 +6,7 @@ import Spinner from "@/components/Spinner";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
+import PropertyDetail from "@/components/PropertyDetail";
 
 const Property = () => {
   const { id } = useParams();
@@ -50,6 +51,7 @@ const Property = () => {
                 <FaArrowLeft className="mr-2" /> Back to Properties
               </Link>
             </div>
+            <PropertyDetail property={property} />
           </section>
         </>
       )}
