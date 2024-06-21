@@ -1,5 +1,4 @@
 import React from "react";
-//import properties from "@/properties.json";
 import PropertyCard from "@/components/PropertyCard";
 import { fetchProperties } from "@/utils/request";
 

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 const PropertyAddForm = () => {
   const [mounted, setMounted] = useState(false);
@@ -29,6 +29,11 @@ const PropertyAddForm = () => {
     },
     images: [],
   });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -75,6 +80,7 @@ const PropertyAddForm = () => {
       amenities: updatedAmenites,
     }));
   };
+
   const handleImageChange = (e) => {
     const { files } = e.target;
 
@@ -92,12 +98,14 @@ const PropertyAddForm = () => {
       images: updatedImages,
     }));
   };
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+
   return (
     mounted && (
-      <form action="" method="">
+      <form
+        action="/api/properties"
+        method="POST"
+        encType="multipart/form-data"
+      >
         <h2 className="text-3xl text-center font-semibold mb-6">
           Add Property
         </h2>
